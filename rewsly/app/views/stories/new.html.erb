@@ -1,0 +1,20 @@
+<h1>New Post</h1>
+<%= form_for :story, url: stories_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </p>
+
+  <p>
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
