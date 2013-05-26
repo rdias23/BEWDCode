@@ -24,6 +24,6 @@ Core Requirements:
 	•	"Handles invalid data. Forms in your application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords."
 	⁃	The user account registration form will not allow users to submit data that does not meet requirements. If the user attempts to submit the Registration Form with invalid information they will be told which fields contain invalid information, the reason the information is invalid, and prompted to change the invalid information before summating the form again.
 	•	"Make use of associations. At least two of your models should be associated."
-	⁃	Their will be an association between the table for User Profile information and the table for Trivia Challenge Score information
+	⁃	There will be an association between the table for User Profile information and the table for Trivia Challenge Score information
 
 Concluding Remarks: Any suggestions regarding the improvement of the project, the scope of the project, and/or possible complications in the execution of the project, that I may not have anticipated, are welcome and greatly appreciated.
