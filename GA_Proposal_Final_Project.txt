@@ -9,20 +9,24 @@ I plan on creating a trivia challenge game for the "A Song of Ice and Fire" book
 
 Core Requirements:
 
-1) "User Generated Content. Your web application must have user-generated content that can be discovered by other users. It will maintain user accounts."
-
-	•	The user generated content will be a profile page for each user. The user will be able to upload and avatar picture and personalize their profile with "favorite quote" and "house allegiance" options.
+	•	 "User Generated Content. Your web application must have user-generated content that can be discovered by other users. It will maintain user accounts."
+	⁃	The user generated content will be a profile page for each user. The user will be able to upload and avatar picture and personalize their profile with "favorite quote" and "house allegiance" options.
 	⁃	This content will be publicly available and discoverable by other users.
 	⁃	Users will need to register for a user account immediately before they are prompt to fill in their profile.
+
 	•	"Security Features. Login credentials must be validated before users can gain access to your application. Your site should have public and private content."
 	⁃	Users will not be able to submit registration forms with unacceptable login credentials. User IDs may not be duplicated, e-mail addresses must be appropriately formatted, and passwords must meet minimum complexity requirements.
 	⁃	The Profile Information and Leader Board Score Information will be publicly accessible. The Trivia Challenge questions themselves will only be available if you have login credentials.
+
 	•	"Hosted. No need to pay for hosting services, you can use GitHub and Heroku."
 	⁃	Github and Heroku will be used for hosting.
+
 	•	"Ruby Gems. Use a Ruby Gem (not the Rails defaults, obviously they don't count). Some ideas to look into: devise or paper clip, carrier wave."
 	⁃	Carrie Wave is a Ruby Gem that will be used to upload an image for use in the profile for each user. Other gems To Be Determined.
+
 	•	"Handles invalid data. Forms in your application should validate data and handle incorrect inputs. Validate sign up information, verify valid email addresses and secure passwords."
 	⁃	The user account registration form will not allow users to submit data that does not meet requirements. If the user attempts to submit the Registration Form with invalid information they will be told which fields contain invalid information, the reason the information is invalid, and prompted to change the invalid information before summating the form again.
+
 	•	"Make use of associations. At least two of your models should be associated."
 	⁃	There will be an association between the table for User Profile information and the table for Trivia Challenge Score information
 
