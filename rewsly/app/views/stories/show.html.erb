@@ -1,6 +1,6 @@
 <p>
   <strong>Title:</strong>
-  <%= @story.title %>
+  <%= link_to @story.title, @story.link %>
 </p>
  
 <p>
@@ -11,6 +11,10 @@
   <%= @story.upvotes %>
 <p>
   <strong>Link:</strong>
-  <%= @story.link %>
+  <%= link_to @story.link, @story.link %>
+</p>
+<p>
+  <strong>Created At:</strong>
+  <%= @story.created_at %>
 </p>
 <%= link_to "Back", root_path %>

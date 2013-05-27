@@ -1,4 +1,7 @@
 <% @stories.each do |story| %>
-  <header><%= story.title %></header>
-  <%= link_to "Show", story %>
+  <p></p> 
+  <header><%= link_to story.title, story.link %></header>
+  <%= link_to "Show Details", story %> | <%= link_to 'Destroy Story', story, method: :delete, data: {
+			confirm: 'Are you sure you want to delete this story?'
+		   } %>
 <% end %>

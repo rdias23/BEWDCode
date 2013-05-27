@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20130519202441) do
   create_table "stories", force: true do |t|
     t.string   "title"
     t.string   "link"
-    t.integer  "upvotes"
+    t.integer  "upvotes",    default: 0
     t.text     "category"
     t.datetime "created_at"
     t.datetime "updated_at"

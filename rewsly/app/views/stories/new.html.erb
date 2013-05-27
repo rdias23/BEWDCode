@@ -1,5 +1,15 @@
+<% if @story.errors.any? %>
+   The following errors prevented you from saving your story:
+   <ul>
+     <% @story.errors.full_messages.each do |error| %>
+       <li>
+         <%= error %>
+       </li>
+     <% end %>  
+   </ul>
+<% end %>
 <h1>New Post</h1>
-<%= form_for :story, url: stories_path do |f| %>
+<%= form_for @story, url: stories_path do |f| %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -13,7 +23,7 @@
   <p>
     <%= f.label :category %><br>
     <%= f.text_field :category %>
- 
+  </p> 
   <p>
     <%= f.submit %>
   </p>
