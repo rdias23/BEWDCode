@@ -1,0 +1,20 @@
+<p>
+  <strong>Title:</strong>
+  <%= link_to @story.title, @story.link %>
+</p>
+
+  <strong>Upvotes:</strong>
+  <%= @story.upvotes %>
+<p>
+  <strong>Link:</strong>
+  <%= link_to @story.link, @story.link %>
+</p>
+<p>
+  Tags: <%= format_tag_list @story.tag_list %>
+</p>
+<p>
+  <strong>Created At:</strong>
+  <%= @story.created_at %>
+</p>
+<%= link_to "Edit Story", edit_story_path(@story) %>
+<%= link_to "Back", root_path %>

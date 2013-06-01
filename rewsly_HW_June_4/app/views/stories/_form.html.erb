@@ -1,0 +1,28 @@
+<% if @story.errors.any? %>
+   The following errors prevented you from saving your story:
+   <ul>
+     <% @story.errors.full_messages.each do |error| %>
+       <li>
+         <%= error %>
+       </li>
+     <% end %>
+   </ul>
+<% end %>
+<%= form_for @story do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, value:  format_tag_list(@story.tag_list) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
