@@ -5,6 +5,7 @@ class Story < ActiveRecord::Base
   has_many :tags
   has_many :categories, through: :tags
   belongs_to :source
+  has_many :comments
 
   def tag_list
     self.categories.pluck(:name)
