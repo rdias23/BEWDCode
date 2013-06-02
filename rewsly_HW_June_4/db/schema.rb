@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130601150526) do
+ActiveRecord::Schema.define(version: 20130602031556) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sources", force: true do |t|
+    t.string   "name"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,7 +32,10 @@ ActiveRecord::Schema.define(version: 20130601150526) do
     t.integer  "upvotes",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "source_id"
   end
+
+  add_index "stories", ["source_id"], name: "index_stories_on_source_id"
 
   create_table "tags", force: true do |t|
     t.integer  "category_id"

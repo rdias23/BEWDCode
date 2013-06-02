@@ -2,7 +2,10 @@
   <strong>Title:</strong>
   <%= link_to @story.title, @story.link %>
 </p>
-
+<p>
+  <strong>Source:</strong>
+  <%= link_to @story.source.name, source_path %>
+</p>
   <strong>Upvotes:</strong>
   <%= @story.upvotes %>
 <p>
@@ -18,5 +21,12 @@
   <strong>Created At:</strong>
   <%= @story.created_at %>
 </p>
+Comments:
+<%= form_tag "" do %>
+    <div>
+      <%= text_area_tag :comment, "", placeholder: 'Enter a comment', :cols => 40, :rows => 6 %>
+    </div>
+    <%= submit_tag "Add Comment" %>
+<% end %>
 <%= link_to "Edit Story", edit_story_path(@story) %>
 <%= link_to "Home", root_path %>

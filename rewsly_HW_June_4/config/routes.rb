@@ -1,4 +1,6 @@
 Rewsly::Application.routes.draw do
+  resources :sources
+
   root to: 'stories#index'
   get "/search", to: "stories#search"
   get "/categories", to: "stories#categories"

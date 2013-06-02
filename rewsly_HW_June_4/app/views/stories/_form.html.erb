@@ -23,6 +23,9 @@
     <%= f.text_field :tag_list, value:  format_tag_list(@story.tag_list) %>
   </p>
   <p>
+	<%= f.collection_select :source_id, @sources, :id, :name %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

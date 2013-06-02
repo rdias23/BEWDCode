@@ -1,0 +1,7 @@
+<h1><%= link_to @source.name, @source.website %></h1>
+<h2>Stories on the site include:</h2>
+<% @stories.each do |story| %>
+ <header><%= link_to story.title, story.link %></header>
+ Tags: <%= format_tag_list story.tag_list %>
+<% end %>
+<p><%= link_to "Home", root_path %></p>

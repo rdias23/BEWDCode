@@ -19,26 +19,29 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @sources = Source.all  
   end
 
   def edit
+    @sources = Source.all
     @story = Story.find(params[:id])
   end
 
   def update
     @story = Story.find(params[:id])
-    @story.update(params[:story].permit(:title, :link, :category, :tag_list))
+    @story.update(params[:story].permit(:title, :link, :category, :tag_list, :source_id))
     redirect_to @story
   end
 
   def create
-    @story = Story.new(params[:story].permit(:title, :link, :category, :tag_list))
+    @story = Story.new(params[:story].permit(:title, :link, :category, :tag_list, :source_id))
 
     if @story.save
       @story.upvotes += 1 
       redirect_to @story
     else
-      render 'new'
+     @sources = Source.all 
+     render 'new'
     end
   end
 

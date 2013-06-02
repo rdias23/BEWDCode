@@ -1,0 +1,10 @@
+<h1>New Source</h1>
+<fieldset>
+  <%= form_for @source do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+    <%= f.submit %>
+  <% end %>
+</fieldset>

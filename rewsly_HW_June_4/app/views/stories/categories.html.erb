@@ -6,7 +6,7 @@
 -----------------------------------------
 <section>
         <% cat.stories.each do |str| %>
-		<p><%= link_to link_to str.title, str.link %> ===
+		<p><%= link_to str.title, str.link %> ===
                   <%= link_to "Show Details", story_path(str) %> </p>
         <% end %>
 </section>

@@ -4,6 +4,7 @@ class Story < ActiveRecord::Base
   validates :link, uniqueness: true
   has_many :tags
   has_many :categories, through: :tags
+  belongs_to :source
 
   def tag_list
     self.categories.pluck(:name)

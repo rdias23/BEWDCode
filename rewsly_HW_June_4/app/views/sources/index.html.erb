@@ -1,0 +1,6 @@
+<h1>Sources</h1>
+<%= link_to "Add a new source", new_source_path %>
+<ol>
+<% @sources.each do |source| %>
+  <li><%= link_to source.name, source.website %></li>
+<% end %>
