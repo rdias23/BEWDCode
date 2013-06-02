@@ -17,10 +17,11 @@ class Story < ActiveRecord::Base
           self.categories << Category.where(name: tag).first_or_create
         end
       end
+
       self.categories.where.not(name: tags).destroy_all
    end
 
 def self.search_for(query)
-  where('title LIKE ? OR category LIKE ?', "%#{query}%", "%#{query}%")
+  where('title LIKE ?', "%#{query}%")
   end
 end

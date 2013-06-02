@@ -10,11 +10,13 @@
   <%= link_to @story.link, @story.link %>
 </p>
 <p>
-  Tags: <%= format_tag_list @story.tag_list %>
+  Tags:	<% @story.tag_list.each do |tgs| %>
+		<%= link_to tgs, category_path(:tgs => tgs) %>
+        <% end %>
 </p>
 <p>
   <strong>Created At:</strong>
   <%= @story.created_at %>
 </p>
 <%= link_to "Edit Story", edit_story_path(@story) %>
-<%= link_to "Back", root_path %>
+<%= link_to "Home", root_path %>

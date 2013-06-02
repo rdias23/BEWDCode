@@ -7,6 +7,16 @@ class StoriesController < ApplicationController
 		query = params[:q]
 		@stories = Story.search_for(query)
   end
+
+  def categories
+		@categories = Category.all	
+  end
+
+  def category
+ 		@categories = Category.all
+		@tgs = params[:tgs]
+  end
+
   def new
     @story = Story.new
   end

@@ -1,7 +1,14 @@
 <% @stories.each do |story| %>
   <p></p> 
-  <header><%= link_to story.title, story.link %></header>
+ 
+ <header><%= link_to story.title, story.link %></header>
+	<p>
+        Tags: <% story.tag_list.each do |tgs| %>
+              <%= link_to tgs, category_path(:tgs => tgs) %>
+              <% end %>
+        </p>
   <%= link_to "Show Details", story %> | <%= link_to "Edit Story", edit_story_path(story) %> | <%= link_to 'Destroy Story', story, method: :delete, data: {
 			confirm: 'Are you sure you want to delete this story?'
 		   } %>
+<p>---------------------------------------------------------------</p>
 <% end %>
