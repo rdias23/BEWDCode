@@ -1,2 +1,10 @@
-<h1>Quiz#end</h1>
-<p>Find me in app/views/quiz/end.html.erb</p>
+<h1>Quiz Results</h1>
+<p id="question">You answered correctly <%= @correct %> out of <%= @total %> questions.</p>
+
+<p id="score"><%= @score %>%</p>
+
+<%= form_tag({:controller => "quiz", :action => "index"}, :method => "get") do %>
+  <div class="center">
+	 <%= submit_tag("Take another quiz", :class => "submit") %>
+  </div>
+<% end %>
