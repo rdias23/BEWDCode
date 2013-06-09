@@ -1,4 +1,5 @@
 Quiz::Application.routes.draw do
+  devise_for :users
   get "quiz/index"
   post "quiz/start"
   get "quiz/question"
@@ -8,6 +9,7 @@ Quiz::Application.routes.draw do
   post "choices/create"
   post "choices/destroy"
   resources :questions
+  root :to => "quiz#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
