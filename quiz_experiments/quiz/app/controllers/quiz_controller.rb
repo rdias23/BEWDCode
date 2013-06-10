@@ -1,12 +1,12 @@
 class QuizController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!
 
   def index
   end
 
   def start
 	 total = params[:number].to_i
-	 all = Question.find(:all).map {|x| x.id}
+         all = Question.where("question_type = 'alcolyte'").map {|x| x.id}
 	 session[:questions] = all.sort_by{rand}[0..(total-1)]
 	 
 	 session[:total]   = total

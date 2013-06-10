@@ -1,6 +1,9 @@
 <h1>Listing questions</h1>
 
-<p>Total: <%= @questions.size %></p>
+Total Questions: <%= @questions.size %><br />-------------------------------<br />
+Alcolyte Questions (minimum 10): <%= @alcolyte_questions.size %><br />
+Maester Questions: <%= @maester_questions.size %><br />
+Archmaester Questions: <%= @archmaester_questions.size %>
 <p><%= link_to 'New Question', new_question_path %></p>
 
 <table border="1">
@@ -14,7 +17,7 @@
 
 <% @questions.each do |question| %>
  <tr>
-   <td><%= question.text %></td>
+   <td><%= question.text %> <br /> (Question Type: <%= question.question_type %>)</td>
    <td>
       <ul>
         <% question.choices.each do |choice| %>
