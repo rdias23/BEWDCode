@@ -3,6 +3,15 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :house_allegiance, "Declare Your House Allegiance!" %><br /></div>
+  <%= f.select :house_allegiance, options_for_select([["Stark", "Stark"], ["Lannister", "Lannister"], ["Greyjoy", "Greyjoy"], ["Martell", "Martell"], ["Tyrell", "Tyrell"], ["Arryn", "Arryn"], ["Tagaryen", "Targaryen"], ["Baratheon", "Baratheon"], ["Blackfyre", "Blackfyre"], ["Night's Watch", "Night's Watch"]], @user.house_allegiance) %></div>
+
+  <div><%= f.label :first_name %><br />
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.text_field :last_name %></div>
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
