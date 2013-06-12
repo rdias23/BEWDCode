@@ -7,6 +7,13 @@ Quiz::Application.routes.draw do
   post "quiz/question"
   post "quiz/answer"
   get "quiz/end"
+  get "challenge_maester/index"
+  post "challenge_maester/start"
+  get "challenge_maester/question"
+  post "challenge_maester/question"
+  post "challenge_maester/answer"
+  get "challenge_maester/end"
+
   post "choices/create"
   post "choices/destroy"
   resources :questions

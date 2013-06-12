@@ -1,0 +1,10 @@
+<h1>Quiz Results</h1>
+<p id="question">You answered correctly <%= @correct %> out of <%= @total %> questions.</p>
+
+<p id="score"><%= @score %>%</p>
+
+<%= form_tag({:controller => "challenge_maester", :action => "index"}, :method => "get") do %>
+  <div class="center">
+	 <%= submit_tag("Take another maester's challenge?", :class => "submit") %>
+  </div>
+<% end %>
