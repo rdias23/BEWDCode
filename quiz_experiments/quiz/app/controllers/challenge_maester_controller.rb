@@ -5,7 +5,7 @@ class ChallengeMaesterController < ApplicationController
   end
 
   def start
-	 total = params[:number].to_i
+	 total = 10
          all = Question.where("question_type = 'maester'").map {|x| x.id}
 	 session[:questions] = all.sort_by{rand}[0..(total-1)]
 	 
@@ -56,7 +56,21 @@ class ChallengeMaesterController < ApplicationController
 	 @correct = session[:correct]
 	 @total   = session[:total]
 	 
-	 @score = @correct * 100 / @total  
+	 @score = @correct * 100 / @total 
+         
+         @user = current_user 
+         @scoreboard = Scoreboard.new
+         @scoreboard.user_id = @user.id
+         @scoreboard.score_type = "maester"
+         @scoreboard.score = @score
+  
+         @scoreboard.save
+
+         @scoreboards = Scoreboard.all         
+         @high_score_sorted_array_of_hashes = @scoreboards.sort_by { |hsh| hsh[:score] }.reverse
+         @count = 1 
+         @is_first_score = "true" 
+         @previous_score = 9999999999
   end
 
   def create

@@ -1,11 +1,13 @@
-<h1>Start Quiz</h1>
+<h1>Welcome to the Maester's Challenge!</h1>
 
-<%= form_tag({:controller => "challenge_maester",
-				  :action => "start"}) do %>
-  <p><%= label_tag(:number, "How many questions do you want in the quiz?", :id => "question") %></p>
-  <p class="center"><%= select_tag(:number, options_for_select((1..10).map {|x| [x, x]}), :id => "count") %> <br /></p>
-  
+<div class="center"> The Maester's Challenge will give the user the chance to test their A Song of Ice and Fire trivia skills with a group of medium difficulty questions. For the purpose of keeping this demonstration short, The Maester's Challenge will be restricted to 10 questions. When deployed into production the Maester's challenge will be 100 questions in length. Those 100 questions should be pulled randomly from a pool of 1000 questions or more, so as to give the user some replay value.
+</div>
+<div class="center">
+       <%= link_to "Take The Maester's Chalenge", challenge_maester_start_path %>
+</div>
+
+<%= form_tag({:controller => "challenge_maester", :action => "start"}, :method => "get") do %>
   <div class="center">
-	 <%= submit_tag "Start!", :class => "submit"%>
+         <%= submit_tag("Begin!!!!", :class => "submit") %>
   </div>
 <% end %>

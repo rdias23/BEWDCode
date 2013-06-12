@@ -7,3 +7,37 @@
 <%= link_to "Take the Maester's Challenge!", challenge_maester_index_path %>
 <p>Maester: (take the challenge of MEDIUM questions: 100 questions: see where you rank against others!)</p>
 <p>Arch-Maester: (take the challenge of HARD questions, only true masters of Westeros history and lore will succeed: 100 questions: see where you rank against others!)</p>
+
+<table border="1">
+  <tr>
+    <th>Place</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Score</th>
+    <th>House</th>
+    <th>Profile</th>
+  </tr>
+
+<h1>Maester's Challenge High Scores</h1>
+<% @high_score_sorted_array_of_hashes.each do |scb| %>
+ <tr>
+	<% if @is_first_score == "true" %>
+        	<% @is_first_score = "false" %>
+                <% @previous_score = scb.score %>
+        <% else %>
+		<% if @previous_score == scb.score %>
+		<% else %>
+			<% @count = @count + 1 %>
+                        <% @previous_score = scb.score %>
+		<% end %>
+        <% end %>
+
+   <td><%= @count.ordinalize %></td>
+   <td><%= scb.user.first_name %></td>
+   <td><%= scb.user.last_name %></td>
+   <td><%= scb.score %></td>
+   <td><%= scb.user.house_allegiance %>
+   <td><%= link_to "details", user_path(:id => scb.user_id) %>
+  </tr>
+<% end %>
+</table>
