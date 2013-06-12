@@ -14,6 +14,15 @@ Quiz::Application.routes.draw do
   post "challenge_maester/question"
   post "challenge_maester/answer"
   get "challenge_maester/end"
+
+  get "challenge_archmaester/index"
+  post "challenge_archmaester/start"
+  get "challenge_archmaester/start"
+  get "challenge_archmaester/question"
+  post "challenge_archmaester/question"
+  post "challenge_archmaester/answer"
+  get "challenge_archmaester/end"
+
   post "choices/create"
   post "choices/destroy"
   resources :questions

@@ -1,0 +1,45 @@
+<h1>Archmaester's Challenge Results</h1>
+<p id="question">You answered correctly <%= @correct %> out of <%= @total %> questions.</p>
+
+<p> Congratulations <%= @user.first_name %> you answered <%= @score %>% of the questions correctly! </p>
+
+<table border="1">
+  <tr>
+    <th>Place</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Score</th>
+    <th>House</th>
+    <th>Profile</th>
+  </tr>
+
+<h1>Archmaester's Challenge High Scores</h1>
+<% @high_score_sorted_array_of_hashes.each do |scb| %>
+ <tr>
+	<% if @is_first_score == "true" %>
+        	<% @is_first_score = "false" %>
+                <% @previous_score = scb.score %>
+        <% else %>
+		<% if @previous_score == scb.score %>
+		<% else %>
+			<% @count = @count + 1 %>
+                        <% @previous_score = scb.score %>
+		<% end %>
+        <% end %>
+
+   <td><%= @count.ordinalize %></td>
+   <td><%= scb.user.first_name %></td>
+   <td><%= scb.user.last_name %></td>
+   <td><%= scb.score %></td>
+   <td><%= scb.user.house_allegiance %>
+   <td><%= link_to "details", user_path(:id => scb.user_id) %>
+  </tr>
+<% end %>
+</table>
+
+<%= form_tag({:controller => "challenge_archmaester", :action => "index"}, :method => "get") do %>
+  <div class="center">
+	 <%= submit_tag("Take another archmaester's challenge?", :class => "submit") %>
+  </div>
+<% end %>
+<p> <%= link_to "Home", home_index_path %> </p>

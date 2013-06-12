@@ -5,34 +5,42 @@
 <%= link_to "Take a quiz!", quiz_index_path %>
 <p>Maester: (take the challenge of MEDIUM questions: 100 questions: see where you rank against others!)</p>
 <%= link_to "Take the Maester's Challenge!", challenge_maester_index_path %>
-<p>Maester: (take the challenge of MEDIUM questions: 100 questions: see where you rank against others!)</p>
 <p>Arch-Maester: (take the challenge of HARD questions, only true masters of Westeros history and lore will succeed: 100 questions: see where you rank against others!)</p>
+<%= link_to "Take the Archmaester's Challenge!", challenge_archmaester_index_path %>
+<p></p>
+<body>
 
-<table border="1">
-  <tr>
+<!-- Main Table(You can define padding accordingly) -->
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+<tr>
+<td width="50%">
+
+<!-- Table on left side -->
+<table width="100%" border="1" cellspacing="0" cellpadding="1">
+<tr>
     <th>Place</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Score</th>
     <th>House</th>
     <th>Profile</th>
-  </tr>
+</tr>
 
 <h1>Maester's Challenge High Scores</h1>
-<% @high_score_sorted_array_of_hashes.each do |scb| %>
+<% @high_score_sorted_array_of_hashes_maester.each do |scb| %>
  <tr>
-	<% if @is_first_score == "true" %>
-        	<% @is_first_score = "false" %>
-                <% @previous_score = scb.score %>
+        <% if @is_first_score_maester == "true" %>
+                <% @is_first_score_maester = "false" %>
+                <% @previous_score_maester = scb.score %>
         <% else %>
-		<% if @previous_score == scb.score %>
-		<% else %>
-			<% @count = @count + 1 %>
-                        <% @previous_score = scb.score %>
-		<% end %>
+                <% if @previous_score_maester == scb.score %>
+                <% else %>
+                        <% @count_maester = @count_maester + 1 %>
+                        <% @previous_score_maester = scb.score %>
+                <% end %>
         <% end %>
 
-   <td><%= @count.ordinalize %></td>
+   <td><%= @count_maester.ordinalize %></td>
    <td><%= scb.user.first_name %></td>
    <td><%= scb.user.last_name %></td>
    <td><%= scb.score %></td>
@@ -40,4 +48,52 @@
    <td><%= link_to "details", user_path(:id => scb.user_id) %>
   </tr>
 <% end %>
+
+
 </table>
+<!-- END -->
+</td>
+<td width="50%">
+
+<!-- Table on right side -->
+<table width="100%" border="1" cellspacing="0" cellpadding="1">
+<tr>
+    <th>Place</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Score</th>
+    <th>House</th>
+    <th>Profile</th>
+</tr>
+
+<h1>Archmaester's Challenge High Scores</h1>
+<% @high_score_sorted_array_of_hashes_archmaester.each do |scb| %>
+ <tr>
+        <% if @is_first_score_archmaester == "true" %>
+                <% @is_first_score_archmaester = "false" %>
+                <% @previous_score_archmaester = scb.score %>
+        <% else %>
+                <% if @previous_score_archmaester == scb.score %>
+                <% else %>
+                        <% @count_archmaester = @count_archmaester + 1 %>
+                        <% @previous_score_archmaester = scb.score %>
+                <% end %>
+        <% end %>
+
+   <td><%= @count_archmaester.ordinalize %></td>
+   <td><%= scb.user.first_name %></td>
+   <td><%= scb.user.last_name %></td>
+   <td><%= scb.score %></td>
+   <td><%= scb.user.house_allegiance %>
+   <td><%= link_to "details", user_path(:id => scb.user_id) %>
+  </tr>
+<% end %>
+
+</table>
+<!-- END -->
+</td>
+</tr>
+</table>
+
+<!-- END OF MAIN TABLE -->
+</body>

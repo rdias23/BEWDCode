@@ -1,0 +1,13 @@
+<h1>Welcome to the Archmaester's Challenge!</h1>
+
+<div class="center"> The Archmaester's Challenge will give the user the chance to test their A Song of Ice and Fire trivia skills with a group of hard difficulty questions. For the purpose of keeping this demonstration short, The Archmaester's Challenge will be restricted to 10 questions. When deployed into production the Archmaester's challenge will be 100 questions in length. Those 100 questions should be pulled randomly from a pool of 1000 questions or more, so as to give the user some replay value.
+</div>
+<div class="center">
+       <%= link_to "Take The Archmaester's Chalenge", challenge_archmaester_start_path %>
+</div>
+
+<%= form_tag({:controller => "challenge_archmaester", :action => "start"}, :method => "get") do %>
+  <div class="center">
+         <%= submit_tag("Begin!!!!", :class => "submit") %>
+  </div>
+<% end %>
