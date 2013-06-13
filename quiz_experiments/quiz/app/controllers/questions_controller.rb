@@ -1,4 +1,10 @@
 class QuestionsController < ApplicationController
+before_filter :authenticate_user!
+  before_filter do 
+    redirect_to home_index_path unless current_user && current_user.admin?
+  end
+
+
 def index
   @questions = Question.all
   @questions.sort! {|a,b| a.text <=> b.text}
