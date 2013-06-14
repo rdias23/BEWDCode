@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130613182814) do
+ActiveRecord::Schema.define(version: 20130614043240) do
 
   create_table "choices", force: true do |t|
     t.string   "text"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20130613182814) do
   end
 
   add_index "scoreboards", ["user_id"], name: "index_scoreboards_on_user_id"
+
+  create_table "session_counters", force: true do |t|
+    t.string   "used_session_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false

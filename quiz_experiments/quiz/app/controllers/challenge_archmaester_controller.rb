@@ -63,8 +63,19 @@ class ChallengeArchmaesterController < ApplicationController
          @scoreboard.user_id = @user.id
          @scoreboard.score_type = "archmaester"
          @scoreboard.score = @score
-  
-         @scoreboard.save
+
+         @used_id_array = []
+         @sessioncounters = SessionCounter.all
+         @sessioncounters.each do |sc|
+                @used_id_array << sc.used_session_id
+         end
+
+         unless @used_id_array.include?(request.session_options[:id])
+                @sessioncounter = SessionCounter.new
+                @sessioncounter.used_session_id = request.session_options[:id]
+                @sessioncounter.save
+                @scoreboard.save
+         end
 
          @scoreboards = Scoreboard.where("score_type = 'archmaester'")
          @high_score_sorted_array_of_hashes = @scoreboards.sort_by { |hsh| hsh[:score] }.reverse
