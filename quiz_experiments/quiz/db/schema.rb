@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130614043240) do
+ActiveRecord::Schema.define(version: 20130616230938) do
 
   create_table "choices", force: true do |t|
     t.string   "text"
     t.boolean  "correct"
     t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "question_counters", force: true do |t|
+    t.string   "used_session_id"
+    t.text     "question_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

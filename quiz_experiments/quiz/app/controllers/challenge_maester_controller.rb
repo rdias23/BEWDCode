@@ -32,7 +32,6 @@ class ChallengeMaesterController < ApplicationController
 	 
 	 session[:question] = @question
 	 session[:choices] = @choices 
-#      end 
   end
 
   def answer
@@ -43,6 +42,30 @@ class ChallengeMaesterController < ApplicationController
 	 
 	 @question = session[:question]
 	 @choices  = session[:choices]
+
+
+
+
+         @used_id_with_question_text_array = []
+         @questioncounters = QuestionCounter.all
+         @questioncounters.each do |qc|
+                @used_id_with_question_text_array << (qc.used_session_id+qc.question_text)
+         end
+
+   if @used_id_with_question_text_array.include?(request.session_options[:id]+@question.text)
+         redirect_to :action => "question"
+	 flash[:notice] = "STOP HITTING THE BACK BUTTON IN YOUR BROWSER! YOUR ATTEMPT TO CHEAT HAS BEEN THWARTED!"
+         return
+   else
+
+         @questioncounter = QuestionCounter.new
+         @questioncounter.used_session_id = request.session_options[:id]
+         @questioncounter.question_text = @question.text
+         @questioncounter.save
+
+
+
+
 	 
 	 @choice = choiceid ? Choice.find(choiceid) : nil
 	 if @choice and @choice.correct
@@ -53,6 +76,7 @@ class ChallengeMaesterController < ApplicationController
 	 end
 	 
 	 session[:current] += 1
+   end 
   end
 
   def end
