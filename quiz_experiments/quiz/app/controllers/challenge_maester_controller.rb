@@ -1,10 +1,11 @@
 class ChallengeMaesterController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
-  end
-
   def start
+	 @user = current_user
+ 	 reset_session
+	 sign_in(@user, :bypass => true)
+	 
 	 total = 10
          all = Question.where("question_type = 'maester'").map {|x| x.id}
 	 session[:questions] = all.sort_by{rand}[0..(total-1)]
@@ -12,12 +13,13 @@ class ChallengeMaesterController < ApplicationController
 	 session[:total]   = total
 	 session[:current] = 0
 	 session[:correct] = 0
-	 
+
 	 redirect_to :action => "question"
   end
 
   def question
- 	 @current = session[:current]
+
+         @current = session[:current]
 	 @total   = session[:total]
 	 
 	 if @current >= @total
@@ -30,6 +32,7 @@ class ChallengeMaesterController < ApplicationController
 	 
 	 session[:question] = @question
 	 session[:choices] = @choices 
+#      end 
   end
 
   def answer
@@ -63,7 +66,7 @@ class ChallengeMaesterController < ApplicationController
          @scoreboard.user_id = @user.id
          @scoreboard.score_type = "maester"
          @scoreboard.score = @score
-         
+        
          @used_id_array = []
          @sessioncounters = SessionCounter.all
 	 @sessioncounters.each do |sc|

@@ -5,6 +5,10 @@ class ChallengeArchmaesterController < ApplicationController
   end
 
   def start
+         @user = current_user
+         reset_session
+         sign_in(@user, :bypass => true)
+
 	 total = 10
          all = Question.where("question_type = 'archmaester'").map {|x| x.id}
 	 session[:questions] = all.sort_by{rand}[0..(total-1)]
