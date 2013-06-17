@@ -11,7 +11,7 @@ Choice.create question_id: 2, text: "'Dawn'"
 Choice.create question_id: 2, text: "'Ice'"
 
 Question.create text: "Who was the King That Knelt?", question_type: "alcolyte"
-Choice.create question_id: 3, text: "Tohran Stark", correct: "true"
+Choice.create question_id: 3, text: "Torrhen Stark", correct: "true"
 Choice.create question_id: 3, text: "The Storm King"
 Choice.create question_id: 3, text: "Mern"
 Choice.create question_id: 3, text: "The Titan's Bastard"

@@ -1,10 +1,11 @@
 <p> <%= link_to "Home", home_index_path %> </p>
 <h1>Listing questions</h1>
 
+
 Total Questions: <%= @questions.size %><br />-------------------------------<br />
 Alcolyte Questions (minimum 10): <%= @alcolyte_questions.size %><br />
-Maester Questions: <%= @maester_questions.size %><br />
-Archmaester Questions: <%= @archmaester_questions.size %>
+Maester Questions (minimum 10): <%= @maester_questions.size %><br />
+Archmaester Questions (minimum 10): <%= @archmaester_questions.size %>
 <p><%= link_to 'New Question', new_question_path %></p>
 
 <table border="1">
